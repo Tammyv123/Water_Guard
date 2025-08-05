@@ -199,27 +199,27 @@ Stay safe & drink clean 🌊
 # ---------------- HTML Routes ----------------
 @app.route('/')
 def home():
-    return render_template('index')
+    return render_template('index.html')
 
 @app.route('/signup')
 def signup_page():
-    return render_template('signup')
+    return render_template('signup.html')
 
 @app.route('/login')
 def login_page():
-    return render_template('login')
+    return render_template('login.html')
 
 @app.route('/book_kit')
 def book_kit_page():
-    return render_template('book_kit')
+    return render_template('book_kit.html')
 
 @app.route('/chatbot')
 def chatbot_page():
-    return render_template('chatbot')
+    return render_template('chatbot.html')
 
 @app.route('/water_test')
 def water_test_page():
-    return render_template('water_test')
+    return render_template('water_test.html')
 
 # ---------------- Run Server ----------------
 if __name__ == '__main__':
