@@ -140,7 +140,7 @@
     chatBox.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
 
     try {
-      const response = await axios.post('http://localhost:5000/chat', { prompt: msg });
+      const response = await axios.post('https://water-guard.onrender.com/chat', { prompt: msg });
       chatBox.innerHTML += `<div><strong>AquaBot:</strong> ${response.data.reply}</div>`;
     } catch (err) {
       chatBox.innerHTML += `<div><strong>AquaBot:</strong> ❌ Error contacting AI agent</div>`;
