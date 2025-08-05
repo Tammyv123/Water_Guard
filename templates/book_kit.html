@@ -1,0 +1,38 @@
+<script>
+  document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // 🔐 Check if user is logged in
+    const auth = await fetch("http://localhost:5000/check-auth", {
+      credentials: "include"
+    });
+    if (!auth.ok) {
+      alert("❌ Please login before booking the kit.");
+      return;
+    }
+
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      date: form.date.value,
+      address: form.address.value
+    };
+
+    try {
+      const res = await fetch('http://localhost:5000/book-kit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: "include",
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      alert(result.message || "✅ Kit booked and confirmation email sent!");
+      form.reset();
+    } catch (error) {
+      alert("❌ Something went wrong. Please try again.");
+    }
+  });
+</script>
