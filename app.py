@@ -196,6 +196,33 @@ Stay safe & drink clean 🌊
     except Exception as e:
         return jsonify({"message": f"❌ Email sending failed: {str(e)}"}), 500
 
+from flask import render_template
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/signup')
+def signup_page():
+    return render_template('signup.html')
+
+@app.route('/login')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/book_kit')
+def book_page():
+    return render_template('book_kit.html')
+
+@app.route('/chatbot')
+def chatbot_page():
+    return render_template('chatbot.html')
+
+@app.route('/water_test')
+def water_test_page():
+    return render_template('water_test.html')
+
+
 # ---------------- Run Server ----------------
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
