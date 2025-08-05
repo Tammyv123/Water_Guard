@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, render_template
 from flask_cors import CORS
 import os
 import smtplib
@@ -196,36 +196,32 @@ Stay safe & drink clean 🌊
     except Exception as e:
         return jsonify({"message": f"❌ Email sending failed: {str(e)}"}), 500
 
-from flask import render_template
-
+# ---------------- HTML Routes ----------------
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index')
 
 @app.route('/signup')
 def signup_page():
-    return render_template('signup.html')
+    return render_template('signup')
 
 @app.route('/login')
 def login_page():
-    return render_template('login.html')
+    return render_template('login')
 
 @app.route('/book_kit')
-def book_page():
-    return render_template('book_kit.html')
+def book_kit_page():
+    return render_template('book_kit')
 
 @app.route('/chatbot')
 def chatbot_page():
-    return render_template('chatbot.html')
+    return render_template('chatbot')
 
 @app.route('/water_test')
 def water_test_page():
-    return render_template('water_test.html')
-
+    return render_template('water_test')
 
 # ---------------- Run Server ----------------
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
-
-

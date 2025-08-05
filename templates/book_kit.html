@@ -3,7 +3,7 @@
     e.preventDefault();
 
     // 🔐 Check if user is logged in
-    const auth = await fetch("http://localhost:5000/check-auth", {
+    const auth = await fetch("https://water-guard.onrender.com/check-auth", {
       credentials: "include"
     });
     if (!auth.ok) {
